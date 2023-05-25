@@ -1,0 +1,12 @@
+# 装备NFS
+kubectl create -f deploy/nfs/rbac.yaml
+kubectl create -f deploy/nfs/deployment.yaml
+kubectl create -f deploy/nfs/class.yaml
+kubectl get pod -l app=nfs-client-provisioner
+
+# 创建mysql
+kubectl create -f deploy/mysql/mysql-nfs.yaml
+kubectl get pod
+
+# 创建nacos
+kubectl create -f deploy/nacos/nacos-pvc-nfs.yaml
