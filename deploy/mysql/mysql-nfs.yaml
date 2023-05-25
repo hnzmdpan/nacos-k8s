@@ -33,8 +33,8 @@ spec:
       volumes:
       - name: mysql-data
         nfs:
-          server: 172.17.79.3
-          path: /data/mysql
+          server: 192.168.3.50
+          path: /share/k8s/nacos/mysql
 ---
 apiVersion: v1
 kind: Service

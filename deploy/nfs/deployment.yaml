@@ -22,7 +22,9 @@ spec:
       serviceAccount: nfs-client-provisioner
       containers:
         - name: nfs-client-provisioner
-          image: quay.io/external_storage/nfs-client-provisioner:latest
+#          image: quay.io/external_storage/nfs-client-provisioner:latest
+          ## unexpected error getting claim reference: selfLink was empty, can't make reference
+          image: registry.cn-beijing.aliyuncs.com/mydlq/nfs-subdir-external-provisioner:v4.0.0
           volumeMounts:
             - name: nfs-client-root
               mountPath: /persistentvolumes
@@ -30,11 +32,11 @@ spec:
             - name: PROVISIONER_NAME
               value: fuseim.pri/ifs
             - name: NFS_SERVER
-              value: 172.17.79.3
+              value: 192.168.3.50
             - name: NFS_PATH
-              value: /data/nfs-share
+              value: /share/k8s/nacos
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 172.17.79.3
-            path: /data/nfs-share
+            server: 192.168.3.50
+            path: /share/k8s/nacos

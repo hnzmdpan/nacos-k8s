@@ -148,12 +148,14 @@ spec:
     - metadata:
         name: data
         annotations:
+          ## 这个注解，后面不支持了
           volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
       spec:
         accessModes: [ "ReadWriteMany" ]
         resources:
           requests:
-            storage: 20Gi
+            storage: 1Gi
+        storageClassName: managed-nfs-storage
   selector:
     matchLabels:
       app: nacos
