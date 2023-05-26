@@ -8,6 +8,8 @@ metadata:
   labels:
     app: nacos
 spec:
+#  publishNotReadyAddresses 表示是否将没有就绪的 Pod 的地址关联到服务上。
+#  默认情况是 false，只有就绪状态的 Pod 的地址才会关联到服务上。
   publishNotReadyAddresses: true 
   ports:
     - port: 8848
